@@ -62,9 +62,10 @@ class Hero {
 }
 
 // Enemies our player must avoid
-var Enemy = function (x,y) {
+var Enemy = function (x, y, speed) {
     this.x = x;
     this.y = y + 60;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
     this.step = 101;
     this.boundary = this.step * 5; // it's just off screen
@@ -91,7 +92,7 @@ Enemy.prototype.update = function (dt) {
     if (this.x < this.boundary) {
         // Move forward
         // Increment x by speed * dt
-        this.x += 200 * dt;
+        this.x += this.speed * dt;
     } else {
         // Reset pos to start
         this.x = this.resetPos;
@@ -120,11 +121,12 @@ Enemy.prototype.render = function () {
 // Place the player object in a variable called player
 
 const player = new Hero();
-const bug1 = new Enemy(-101, 0);
-const bug2 = new Enemy(-101, 83);
-const bug3 = new Enemy((-101*2.5), 83);
+const bug1 = new Enemy(-101, 0, 200);
+const bug2 = new Enemy(-101, 83, 300);
+const bug3 = new Enemy((-101 * 2.5), 83, 300);
+const bug4 = new Enemy((-101 * 5), 83*2, 400);
 const allEnemies = [];
-allEnemies.push(bug1,bug2,bug3);
+allEnemies.push(bug1, bug2, bug3, bug4);
 console.log(allEnemies);
 
 // This listens for key presses and sends the keys to your
