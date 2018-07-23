@@ -21,13 +21,35 @@
 
 class Hero {
     constructor() {
-        this.x = 0;
-        this.y = 0;
         this.sprite = 'images/char-boy.png';
+        this.step = 101;
+        this.jump = 83;
+        this.startX = this.step * 2;
+        this.startY = this.jump * 5;
+        this.x = this.startX;
+        this.y = this.startY;
     }
     // Draw plater sprite on current x and y coord position
     render() {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+    }
+    // Update player's x and y property according to input
+    handleInput(input){
+        switch(input) {
+            case 'left':
+            this.x -= this.step;
+            break;
+            case 'up':
+            this.y -= this.jump;
+            break;
+            case 'right':
+            this.x += this.step;
+            break;
+            case 'down':
+            this.y += this.jump;
+            break;
+        }
+
     }
 }
 const player = new Hero();
@@ -89,5 +111,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    //player.handleInput(allowedKeys[e.keyCode]);
+    player.handleInput(allowedKeys[e.keyCode]);
 });
