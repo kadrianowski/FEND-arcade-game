@@ -1,21 +1,21 @@
 // Hero class
-    // Constructor
-        // Properties
-            // x pos
-            // y pos 
-            // Sprite image
-        // Methods
-            // Update Position
-                // Check collision here 
-                    // Did player x and y collide with enemy?
-                // Check win here
-                    // Did player x and y reach final tile?
-            // Render
-                // Draw plater sprite on current x and y coord position
-            // Handle keyboard input
-                // Update player's x and y property according to input
-            // Reset Hero
-                // Set x and y to starting x and y 
+// Constructor
+// Properties
+// x pos
+// y pos 
+// Sprite image
+// Methods
+// Update Position
+// Check collision here 
+// Did player x and y collide with enemy?
+// Check win here
+// Did player x and y reach final tile?
+// Render
+// Draw plater sprite on current x and y coord position
+// Handle keyboard input
+// Update player's x and y property according to input
+// Reset Hero
+// Set x and y to starting x and y 
 
 
 
@@ -34,38 +34,41 @@ class Hero {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
     // Update player's x and y property according to input
-    handleInput(input){
-        switch(input) {
+    handleInput(input) {
+        switch (input) {
             case 'left':
-            if (this.x > 0){
-                this.x -= this.step;
-            }
-            break;
+                if (this.x > 0) {
+                    this.x -= this.step;
+                }
+                break;
             case 'up':
-            if (this.y > this.jump) {
-                this.y -= this.jump;
-            }
-            break;
+                if (this.y > this.jump) {
+                    this.y -= this.jump;
+                }
+                break;
             case 'right':
-            if (this.x < this.step * 4) {
-                this.x += this.step;
-            }
-            break;
+                if (this.x < this.step * 4) {
+                    this.x += this.step;
+                }
+                break;
             case 'down':
-            if (this.y < this.jump * 4) {
-                this.y += this.jump;
-            }
-            break;
+                if (this.y < this.jump * 4) {
+                    this.y += this.jump;
+                }
+                break;
         }
 
     }
 }
 
 // Enemies our player must avoid
-var Enemy = function() {
-    this.x = 0;
-    this.y = 0;
+var Enemy = function (x,y) {
+    this.x = x;
+    this.y = y + 60;
     this.sprite = 'images/enemy-bug.png';
+    this.step = 101;
+    this.boundary = this.step * 5; // it's just off screen
+    this.resetPos = -this.step;
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -74,21 +77,27 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    
+
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function(dt) {
+Enemy.prototype.update = function (dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
 
-    // If enemy is not passed bondary
+    // If enemy has not passed boundary
+    if (this.x < this.boundary) {
         // Move forward
         // Increment x by speed * dt
-    // else
+        this.x += 200 * dt;
+    } else {
         // Reset pos to start
+        this.x = this.resetPos;
+    }
+
+
 };
 
 // New hero object
@@ -97,7 +106,7 @@ Enemy.prototype.update = function(dt) {
 // For each enemy create and push new Enemy object into above array
 
 // Draw the enemy on the screen, required method for game
-Enemy.prototype.render = function() {
+Enemy.prototype.render = function () {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
@@ -111,13 +120,16 @@ Enemy.prototype.render = function() {
 // Place the player object in a variable called player
 
 const player = new Hero();
-const bug1 = new Enemy();
+const bug1 = new Enemy(-101, 0);
+const bug2 = new Enemy(-101, 83);
+const bug3 = new Enemy((-101*2.5), 83);
 const allEnemies = [];
-allEnemies.push(bug1);
+allEnemies.push(bug1,bug2,bug3);
+console.log(allEnemies);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
-document.addEventListener('keyup', function(e) {
+document.addEventListener('keyup', function (e) {
     var allowedKeys = {
         37: 'left',
         38: 'up',
