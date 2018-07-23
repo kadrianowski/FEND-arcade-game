@@ -60,9 +60,12 @@ class Hero {
 
     }
 }
-const player = new Hero();
+
 // Enemies our player must avoid
 var Enemy = function() {
+    this.x = 0;
+    this.y = 0;
+    this.sprite = 'images/enemy-bug.png';
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -71,7 +74,7 @@ var Enemy = function() {
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
-    this.sprite = 'images/enemy-bug.png';
+    
 };
 
 // Update the enemy's position, required method for game
@@ -107,7 +110,10 @@ Enemy.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-
+const player = new Hero();
+const bug1 = new Enemy();
+const allEnemies = [];
+allEnemies.push(bug1);
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
