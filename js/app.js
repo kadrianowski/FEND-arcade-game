@@ -59,6 +59,15 @@ class Hero {
         }
 
     }
+    update() {
+
+        for (let enemy of allEnemies) {
+            if (this.y === enemy.y) {
+                console.log('same')
+            }
+            console.log(this.y, enemy.y)
+        }   
+    }
 }
 
 // Enemies our player must avoid
@@ -124,7 +133,7 @@ const player = new Hero();
 const bug1 = new Enemy(-101, 0, 200);
 const bug2 = new Enemy(-101, 83, 300);
 const bug3 = new Enemy((-101 * 2.5), 83, 300);
-const bug4 = new Enemy((-101 * 5), 83*2, 400);
+const bug4 = new Enemy((-101 * 5), 83 * 2, 400);
 const allEnemies = [];
 allEnemies.push(bug1, bug2, bug3, bug4);
 console.log(allEnemies);
