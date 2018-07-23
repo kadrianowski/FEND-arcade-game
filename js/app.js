@@ -17,7 +17,7 @@
             // Reset Hero
                 // Set x and y to starting x and y 
 
-const player = new Hero();
+
 
 class Hero {
     constructor() {
@@ -30,7 +30,7 @@ class Hero {
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     }
 }
-
+const player = new Hero();
 // Enemies our player must avoid
 var Enemy = function() {
     // Variables applied to each of our instances go here,
@@ -89,5 +89,5 @@ document.addEventListener('keyup', function(e) {
         40: 'down'
     };
 
-    player.handleInput(allowedKeys[e.keyCode]);
+    //player.handleInput(allowedKeys[e.keyCode]);
 });
