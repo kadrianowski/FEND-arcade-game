@@ -28,6 +28,7 @@ class Hero {
         this.startY = (this.jump * 4) + 60;
         this.x = this.startX;
         this.y = this.startY;
+        this.victory = false;
     }
     // Draw plater sprite on current x and y coord position
     render() {
@@ -62,11 +63,18 @@ class Hero {
     update() {
 
         for (let enemy of allEnemies) {
-            if (this.y === enemy.y && (enemy.x + enemy.step/2 > this.x &&
-                    enemy.x < this.x + this.step/2)) {
-                alert('collide')
+            if (this.y === enemy.y && (enemy.x + enemy.step / 2 > this.x &&
+                    enemy.x < this.x + this.step / 2)) {
+                this.reset();
             }
         }
+        if (this.y === 55) {
+            this.victory = true;
+        }
+    }
+    reset() {
+        this.y = this.startY;
+        this.x = this.startX;
     }
 }
 
