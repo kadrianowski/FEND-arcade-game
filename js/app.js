@@ -25,7 +25,7 @@ class Hero {
         this.step = 101;
         this.jump = 83;
         this.startX = this.step * 2;
-        this.startY = (this.jump * 4) + 60;
+        this.startY = (this.jump * 4) + 55;
         this.x = this.startX;
         this.y = this.startY;
         this.victory = false;
@@ -81,7 +81,7 @@ class Hero {
 // Enemies our player must avoid
 var Enemy = function (x, y, speed) {
     this.x = x;
-    this.y = y + 60;
+    this.y = y + 55;
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
     this.step = 101;
