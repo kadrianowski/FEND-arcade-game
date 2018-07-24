@@ -43,7 +43,7 @@ class Hero {
                 }
                 break;
             case 'up':
-                if (this.y > this.jump) {
+                if (this.y > 0) {
                     this.y -= this.jump;
                 }
                 break;
@@ -68,7 +68,7 @@ class Hero {
                 this.reset();
             }
         }
-        if (this.y === 55) {
+        if (this.y < 0) {
             this.victory = true;
         }
     }
