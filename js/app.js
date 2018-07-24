@@ -1,24 +1,3 @@
-// Hero class
-// Constructor
-// Properties
-// x pos
-// y pos 
-// Sprite image
-// Methods
-// Update Position
-// Check collision here 
-// Did player x and y collide with enemy?
-// Check win here
-// Did player x and y reach final tile?
-// Render
-// Draw plater sprite on current x and y coord position
-// Handle keyboard input
-// Update player's x and y property according to input
-// Reset Hero
-// Set x and y to starting x and y 
-
-
-
 class Hero {
     constructor() {
         this.sprite = 'images/char-boy.png';
